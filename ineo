@@ -505,7 +505,7 @@ function create {
   mkdir -p ${TEMP_DIR}/${version}
   # if is not extracted then the tar maybe is not good, so a message suggesting
   # to use -d option is showed
-  if ! tar -xzf ${INEO_HOME}/neo4j/${tar_name} \
+  if ! tar -xz --no-same-owner -f ${INEO_HOME}/neo4j/${tar_name} \
     -C ${TEMP_DIR}/${version} &> /dev/null; then
     printf "\n  ${PURPLE}Error -> The tar file ${BOLD}${tar_name}${PURPLE} can't be extracted\n"
     printf "\n  ${NF}Try run the command ${UNDERLINE}create${NF} with the -d option to download the tar file again\n\n"
