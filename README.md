@@ -12,7 +12,7 @@ Ineo figure out this issue allowing to manage different Neo4j instances on diffe
 
 * **Bash**. Installed by default on OS X and Ubuntu
 * **Curl**. Installed by default on OS X and Ubuntu
-* **Java**. In order to start the Neo4j server
+* **Java 1.8+**.  In order to start the Neo4j server
 
 ## Installation
 
