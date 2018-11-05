@@ -26,7 +26,7 @@ VERSION=1.1.0
 
 DEFAULT_HOME="/opt/ineo"
 
-DEFAULT_VERSION='3.3.1'k
+DEFAULT_VERSION='3.4.9'
 
 DEFAULT_PORT='7474'
 
@@ -359,28 +359,28 @@ function version {
 # ==============================================================================
 # UPDATE
 # ==============================================================================
-
-function update {
-  if [[ -n "${2}" ]]; then
-    invalid_command_param "${2}" "update"
-    exit 1
-  fi
-
-  local local_file=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)/`basename "${BASH_SOURCE[0]}"`
-
-  local remote_file=${TEMP_DIR}/remote_ineo
-
-  curl -s -o "${remote_file}" "${INEO_HOSTNAME}/ineo"
-
-  if cmp --silent "${local_file}" "${remote_file}"; then
-    printf "\n  The last ineo version already is installed!\nso nothing was updated\n\n"
-    version
-  else
-    chmod 700 "${remote_file}"
-    "${remote_file}" UPDATE_SCRIPT_BATCH "${INEO_HOME}" "${TEMP_DIR}" "${VERSION}"
-  fi
-  exit 0
-}
+#
+#function update {
+#  if [[ -n "${2}" ]]; then
+#    invalid_command_param "${2}" "update"
+#    exit 1
+#  fi
+#
+#  local local_file=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)/`basename "${BASH_SOURCE[0]}"`
+#
+#  local remote_file=${TEMP_DIR}/remote_ineo
+#
+#  curl -s -o "${remote_file}" "${INEO_HOSTNAME}/ineo"
+#
+#  if cmp --silent "${local_file}" "${remote_file}"; then
+#    printf "\n  The last ineo version already is installed!\nso nothing was updated\n\n"
+#    version
+#  else
+#    chmod 700 "${remote_file}"
+#    "${remote_file}" UPDATE_SCRIPT_BATCH "${INEO_HOME}" "${TEMP_DIR}" "${VERSION}"
+#  fi
+#  exit 0
+#}
 
 # ==============================================================================
 # UPDATE_SCRIPT_BATCH
@@ -1227,7 +1227,6 @@ HELP="
     destroy         Remove a specific instance <name>
 
     install         Install ineo
-    update          Update ineo
     uninstall       Uninstall ineo
 
     help            Show this help or help for specific [command]
@@ -1564,9 +1563,9 @@ case "${COMMAND}" in
   shell)
     shell $@
     ;;
-  update)
-    update $@
-    ;;
+#  update)
+#    update $@
+#    ;;
   versions)
     versions $@
     ;;
