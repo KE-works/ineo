@@ -43,6 +43,7 @@ INEO_HOSTNAME="${INEO_HOSTNAME:-http://ineo.cohesivestack.com}"
 # setting INEO_HOME
 INEO_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 INEO_HOME="${INEO_HOME:-$INEO_SCRIPT_DIR/../}"
+echo "INEO_HOME is set to ${INEO_HOME}"
 
 LOCK_DIR='/tmp/ineo.neo4j.instances.lock'
 
