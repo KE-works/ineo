@@ -40,6 +40,10 @@ NEO4J_HOSTNAME="${NEO4J_HOSTNAME:-http://dist.neo4j.org}"
 # with testing to use a mock
 INEO_HOSTNAME="${INEO_HOSTNAME:-http://ineo.cohesivestack.com}"
 
+# setting INEO_HOME
+INEO_SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+INEO_HOME="${INEO_HOME:-$INEO_SCRIPT_DIR}"
+
 LOCK_DIR='/tmp/ineo.neo4j.instances.lock'
 
 TEMP_DIR="/tmp/$$.ineo"
