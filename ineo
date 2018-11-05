@@ -43,12 +43,12 @@ INEO_HOSTNAME="${INEO_HOSTNAME:-http://ineo.cohesivestack.com}"
 # setting INEO_HOME
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  INEO_SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
   SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] && SOURCE="$INEO_SCRIPT_DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 INEO_SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
-INEO_HOME_FROM_SCRIPT_DIR= realpath ${INEO_SCRIPT_DIR}/../
+INEO_HOME_FROM_SCRIPT_DIR=realpath $INEO_SCRIPT_DIR/../
 INEO_HOME="${INEO_HOME:-$INEO_HOME_FROM_SCRIPT_DIR}"
 echo "INEO_HOME is set to ${INEO_HOME}"
 
