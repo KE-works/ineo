@@ -482,7 +482,7 @@ function create {
   local force_download=false
   local force_install=false
   local allow_external_connections=false
-  local autostart=false
+  local autostart=0
 
   shift
   while getopts ":p:s:b:v:e:adfA" optname
@@ -513,7 +513,7 @@ function create {
         force_install=true
         ;;
       A)
-        autostart=true
+        autostart=1
         ;;
       *)
         invalid_command_param "${OPTARG}" "create"
