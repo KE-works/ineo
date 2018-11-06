@@ -482,9 +482,10 @@ function create {
   local force_download=false
   local force_install=false
   local allow_external_connections=false
+  local autostart=false
 
   shift
-  while getopts ":p:s:b:v:e:adf" optname
+  while getopts ":p:s:b:v:e:adfA" optname
   do
     case "${optname}" in
       p)
@@ -510,6 +511,9 @@ function create {
         ;;
       f)
         force_install=true
+        ;;
+      A)
+        autostart=true
         ;;
       *)
         invalid_command_param "${OPTARG}" "create"
@@ -589,7 +593,7 @@ neo4j_version=${version}
 neo4j_edition=${edition}
 
 # autostart
-ineo_start_auto=1
+ineo_start_auto=${autostart}
 #ineo_start_priority=
 ineo_start_delay=${DEFAULT_AUTO_DELAY}
 EOF
@@ -1614,6 +1618,8 @@ HELP_CREATE="
     -d            Force download of Neo4j version
 
     -f            Force install even if instance already exists
+
+    -A            Autostarts the instance if ineo is installed as a service
 
 "
 
