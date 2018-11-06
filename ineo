@@ -303,9 +303,9 @@ After=network.target remote-fs.target
 [Service]
 Type=oneshot
 SyslogIdentifier=ineo
-Environment="INEO_HOME=/var/lib/ineo"
-ExecStart=/var/lib/ineo/bin/ineo autostart
-ExecStop=/var/lib/ineo/bin/ineo stop -q
+Environment="INEO_HOME=${INEO_HOME}"
+ExecStart=${INEO_HOME}/bin/ineo autostart
+ExecStop=${INEO_HOME}/bin/ineo stop -q
 RemainAfterExit=yes
 LimitNOFILE=20000
 
@@ -589,9 +589,9 @@ neo4j_version=${version}
 neo4j_edition=${edition}
 
 # autostart
-#ineo_start_auto=0
+ineo_start_auto=1
 #ineo_start_priority=
-#ineo_start_delay=${DEFAULT_AUTO_DELAY}
+ineo_start_delay=${DEFAULT_AUTO_DELAY}
 EOF
 
   # Finnaly move the instance for installation
